@@ -18,9 +18,33 @@
     <input id="base" type="color" name="base" value="#ffc600">
   </div>
 
-  <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+  <div id="square" />
 
   <style>
+
+/* what does the ":root" mean here? Original values for all variables in the css? */
+  :root {
+    --base: #ffc600;
+    --spacing: 10px;
+    --blur: 10px;
+  }
+
+
+    #square {
+      width: var(--spacing);
+      height: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+      margin: auto;
+    }
+
+  .hl {
+    /* the color will be a variable that looks for the value of an id called base */
+    color: var(--base);
+  }
+
+
+
 
     /*
       misc styles, nothing to do with CSS variables
@@ -45,7 +69,25 @@
   </style>
 
   <script>
-  </script>
+  const inputs = document.querySelectorAll(".controls input");
+
+function handleUpdate() {
+  /* this in this context is the element which received the fn call
+    this.dataset.sizing is "px" for the sliders
+  */
+
+  const suffix = this.dataset.sizing || "";
+
+  // look into what the params for documentElement.style.setProperty are
+  document.documentElement.style.setProperty(
+    `--${this.name}`,
+    this.value + suffix
+  );
+}
+
+inputs.forEach(input => input.addEventListener("change", handleUpdate));
+inputs.forEach(input => input.addEventListener("mousemove", handleUpdate));
+</script>
 
 </body>
 </html>
