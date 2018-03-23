@@ -84,27 +84,29 @@ fullNames = ary => ary.map(el => `${el.first} ${el.last}`);
 // 3. Sort the inventors by birthdate, oldest to youngest
 
 // if the first element is greater than the second, move it further in the array, else move it back
-sortedByBirth = ary => {
-  return ary.sort((a, b) => (a.year > b.year ? 1 : -1));
-};
+sortedByBirth = ary => ary.sort((a, b) => (a.year > b.year ? 1 : -1));
 
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live?
 
 // 5. Sort the inventors by years lived
 
+sortedByAge = ary => {
+  return;
+};
+
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
-const alpha = people.sort((lastOne, nextOne) => {
-  debugger;
-  const [aLast, aFirst] = lastOne.split(", ");
-  const [bLast, bFirst] = nextOne.split(", ");
-  return aLast > bLast ? 1 : -1;
-});
-console.log(alpha);
+sortedByLastName = ary => {
+  return people.sort((lastOne, nextOne) => {
+    const [aLast, aFirst] = lastOne.split(", ");
+    const [bLast, bFirst] = nextOne.split(", ");
+    return aLast > bLast ? 1 : -1;
+  });
+};
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
@@ -128,7 +130,7 @@ const data = [
 console.log("Inventors born in the 1500's: ", born1500s(inventors));
 console.log("Inventors first and last names: ", fullNames(inventors));
 console.log("Inventors sorted by birth year: ", sortedByBirth(inventors));
-console.log("People sorted by last name: ", alpha);
+console.log("People sorted by last name: ", sortedByLastName(people));
 </script>
 </body>
 </html>
