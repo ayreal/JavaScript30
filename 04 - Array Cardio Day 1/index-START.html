@@ -125,7 +125,12 @@ totalYearsLived = ary => {
 // 5. Sort the inventors by years lived
 
 sortedByAge = ary => {
-  return ary.sort((a, b) => {});
+  return ary.sort((a, b) => {
+    // debugger;
+    const life1 = a.passed - a.year;
+    const life2 = b.passed - b.year;
+    return life1 > life2 ? 1 : -1;
+  });
 };
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
@@ -164,12 +169,21 @@ const data = [
   "truck"
 ];
 
+sumInstances = ary => {
+  return ary.reduce((total, i) => {
+    total[i] = (total[i] || 0) + 1;
+    return total;
+  }, {});
+};
+
 console.log("Inventors born in the 1500's: ", born1500s(inventors));
 console.log("Inventors first and last names: ", fullNames(inventors));
 console.log("Inventors sorted by birth year: ", sortedByBirth(inventors));
 console.log("Total years on Earth: ", totalYearsLived(inventors));
+console.log("People sorted by age at death: ", sortedByAge(inventors));
 console.log("Paris Blvds with de: ", deBlvds(parisBlvds));
 console.log("People sorted by last name: ", sortedByLastName(people));
+console.log("Count instances of data: ", sumInstances(data));
 </script>
 </body>
 </html>
